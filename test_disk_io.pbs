@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#PBS -l ncpus=1
+#PBS -l mem=10GB
+#PBS -l jobfs=20GB
+#PBS -P zw52
+#PBS -l walltime=1:00:00
+#PBS -l storage=scratch/zw52+gdata/zw52
+#PBS -l wd
+#PBS -M himanshu.joshi@sydney.edu.au
+#PBS -m ae
+#PBS -o logs/test_disk_io.output.log
+#PBS -e logs/test_disk_io.error.log
+
+./test_disk_io.sh $PBS_JOBFS 20 output/pbs_jobfs.csv
+./test_disk_io.sh /scratch/zw52 20 output/scratch.csv
+./test_disk_io.sh /g/data/zw52 20 output/gdata.csv
